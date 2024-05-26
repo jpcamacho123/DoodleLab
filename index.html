@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Main Menu</title>
+    <style>
+      
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .main-menu {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .main-menu h1 {
+            font-size: 4em;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .button {
+            font-size: 1.5em;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            margin: 10px;
+        }
+
+        .button:hover {
+            background: linear-gradient(45deg, #ff4757, #ff6b6b);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .button:active {
+            transform: translateY(1px);
+            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a{
+          text-decoration: none;
+          color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-menu">
+        <h1>Doodle Jump</h1>
+        <button class="button" id="start-button" class="start-button"><a href="/DoodleJump.html">Start Game</a></button>
+        <button class="button" id="info-button">Info</button>
+        <button class="button" id="instructions-button">Instructions</button>
+        <button class="button" id="credits-button">Credits</button>
+    </div>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>About Doodle Jump</h2>
+            <p>"Doodle Jump" is a popular mobile game developed by Lima Sky. Released in 2009, but "WE" have made the game more interesting by adding new features for the game, where you start the game with a limited time. You can collect a "Mystery Box" that contains UNIQUE features that It gives you more time to play and when you obtain the box is that you gain a "RANDOM" ability that makes the game more challenging and interesting. The abilities are "inverted controls" it makes the controller inverted, "Doodler Shrink" it makes the Doodler tiny, "Disappearing Platform" it randomly removes a platform. All the abilities are activated for a certain time. Its straightforward mechanics and challenging levels make "Doodle Jump" a timeless favorite among gamers.</p>
+        </div>
+    </div>
+
+    <div id="instructionsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>How to Play Doodle Jump</h2>
+            <p>1. Use the arrow keys or tilt your device to move The Doodler left and right.</p>
+            <p>2. Jump on platforms to go higher. Some platforms disappear.</p>
+            <p>3. Collect "Mystery Box" to obtain a random ability that makes the game more challenging but give you more time to play.</p>
+            <p>4. Try to get the highest score possible without falling off the screen.</p>
+            <p>5. Enjoy the Game.</p>
+        </div>
+    </div>
+
+    <div id="creditsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Members</h2>
+            <p>Freimelyn Umbay</p>
+            <p>Jude Arquero</p>
+            <p>Reymark Calipjo</p>
+            <p>John Paul Camacho</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('info-button').onclick = function() {
+            document.getElementById('infoModal').style.display = 'block';
+        }
+
+        document.getElementById('instructions-button').onclick = function() {
+            document.getElementById('instructionsModal').style.display = 'block';
+        }
+
+        document.getElementById('credits-button').onclick = function() {
+            document.getElementById('creditsModal').style.display = 'block';
+        }
+
+        var closeButtons = document.querySelectorAll('.close');
+        closeButtons.forEach(function(button) {
+            button.onclick = function() {
+                button.parentElement.parentElement.style.display = 'none';
+            }
+        });
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('infoModal')) {
+                document.getElementById('infoModal').style.display = 'none';
+            }
+            if (event.target == document.getElementById('instructionsModal')) {
+                document.getElementById('instructionsModal').style.display = 'none';
+            }
+            if (event.target == document.getElementById('creditsModal')) {
+                document.getElementById('creditsModal').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
